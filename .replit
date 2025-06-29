@@ -1,0 +1,12 @@
+run = "python combined_server.py"
+entrypoint = "combined_server.py"
+
+[nix]
+channel = "stable-23.05"
+
+[deployment]
+run = ["sh", "-c", "python -m pip install --upgrade pip && pip install -r requirements.txt && python combined_server.py"]
+
+[env]
+PYTHONPATH = "${REPL_SLUG}"
+PYTHONUNBUFFERED = "1"
